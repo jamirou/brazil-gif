@@ -90,16 +90,28 @@
     }
 
     footer {
-      background-color: rgba(118, 168, 173, 0.7); /* #76A8AD con transparencia */
+      background-color: rgba(118, 168, 173, 0.7);
       color: #fff;
       padding: 20px;
       font-size: 1em;
       font-weight: bold;
       text-shadow: 1px 1px #000;
+      width: 100vw;
+      box-sizing: border-box;
       position: relative;
-      bottom: 0;
-      width: 100%;
-      margin-top: 80px;
+      z-index: 2;
+    }
+
+    footer span {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #gif-footer {
+      display: none;
+      margin: 0 auto;
+      margin-bottom: 30px;
+      max-width: 400px;
     }
   </style>
 </head>
@@ -125,16 +137,20 @@
       <h2>🇧🇷 Test Brasileiro jjj</h2>
       <p>¿Cuál es el idioma oficial de EU Brasil?</p>
       <div class="test-opciones">
-        <button class="btn" onclick="respuesta('mala')">Brasileño 🇧🇷</button>
+        <button class="btn" onclick="respuesta('mala')">Brasileiro 🇧🇷</button>
         <button class="btn" onclick="respuesta('mala')">Cantoneis</button>
         <button class="btn" onclick="respuesta('correcta')">Portugueisss 👀</button>
       </div>
       <div id="resultado" class="respuesta"></div>
     </div>
 
-    <footer>
-      <p>Hecho con 🤍 por Jamiro. — Vai com Deus, Fer.</p>
+    <footer onclick="mostrarGif()">
+      <p>Hecho con 🤍 por Jamiro. — <span>Vai com Deus, Fer.</span></p>
     </footer>
+
+    <div id="gif-footer">
+      <img src="https://media.giphy.com/media/gMHFX7PEDZEHK/giphy.gif?cid=ecf05e47tjca7tzatb7gja9lcnbor66bl7yoznn0xp4vf18z&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="fer brasil gif" style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
+    </div>
   </div>
 
   <audio id="samba-audio" src="samba.mp3" preload="auto"></audio>
@@ -147,7 +163,7 @@
 
     function tomarCaipirina() {
       alert("🍹 +1 caipiriña agregada al sistema inmune. Saúde! == Salutssss🥳");
-    } 
+    }
 
     function bailarConJesus() {
       document.getElementById("gif-jesus").innerHTML = '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVzb29pcW9oNDNoOTZlbjhzcXpqbDI1bTV2NWV4djFtaTA5djgwaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3orieY6Kny8HW0HBCg/giphy.gif" alt="Jesús bailando">';
@@ -158,8 +174,13 @@
       if (valor === 'correcta') {
         resultado.innerHTML = '¡Muy bien Fer 🥳! 🌸 <br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz">';
       } else {
-        resultado.innerHTML = 'Nop intenta de nuevo Fer... 🥺';
+        resultado.innerHTML = '🥺 Nop, intenta de nuevo Fer...';
       }
+    }
+
+    function mostrarGif() {
+      const gif = document.getElementById("gif-footer");
+      gif.style.display = gif.style.display === "none" ? "block" : "none";
     }
   </script>
 </body>
