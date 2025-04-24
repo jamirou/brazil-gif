@@ -54,17 +54,6 @@
       box-shadow: 0 0 15px #000000aa;
     }
 
-    .mapa-container img {
-      width: 100%;
-      max-width: 350px;
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #ddd;
-    }
-
     .test-opciones button {
       display: block;
       margin: 10px auto;
@@ -99,6 +88,19 @@
       z-index: 2;
       padding: 20px;
     }
+
+    footer {
+      background-color: rgba(118, 168, 173, 0.7); /* #76A8AD con transparencia */
+      color: #fff;
+      padding: 20px;
+      font-size: 1em;
+      font-weight: bold;
+      text-shadow: 1px 1px #000;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      margin-top: 80px;
+    }
   </style>
 </head>
 <body>
@@ -116,24 +118,22 @@
     </div>
 
     <div class="mapa-container">
-      <h2>Aquí está la Fer 🥺</h2>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_map_of_Brazil.svg" alt="mapa de brasil" />
-      <p style="font-weight: bold; color: #ffeb3b;">🌞 Descansando cerquita del mar... comiendo algo vegan 🌱 </p>
+      <h2>Ya se siente su ausencia 🤍🥺</h2>
     </div>
 
     <div class="test-container">
       <h2>🇧🇷 Test Brasileiro jjj</h2>
       <p>¿Cuál es el idioma oficial de EU Brasil?</p>
       <div class="test-opciones">
-        <button class="btn" onclick="respuesta('mala')">Brasileño🇧🇷</button>
+        <button class="btn" onclick="respuesta('mala')">Brasileño 🇧🇷</button>
         <button class="btn" onclick="respuesta('mala')">Cantoneis</button>
-        <button class="btn" onclick="respuesta('correcta')">Portugueisss👀</button>
+        <button class="btn" onclick="respuesta('correcta')">Portugueisss 👀</button>
       </div>
       <div id="resultado" class="respuesta"></div>
     </div>
 
     <footer>
-      <p>Hecho con 🤍 por Jamiro. — .</p>
+      <p>Hecho con 🤍 por Jamiro. — Vai com Deus, Fer.</p>
     </footer>
   </div>
 
