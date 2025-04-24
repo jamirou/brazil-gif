@@ -1,76 +1,166 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido a Brasil 🎉</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌴 Fer en Brasil 🌞</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      padding: 20px;
-      background-color: #000;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
       color: #fff;
-      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
       text-align: center;
+      overflow-x: hidden;
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-top: 20px;
-      color: #00ffcc;
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+      margin-top: 30px;
+      color: #ffeb3b;
+      text-shadow: 2px 2px #000;
     }
 
-    p {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-
-    .gif-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-
-    .gif-container img {
-      width: 100%;
-      max-width: 320px;
+    .btn {
+      background: #00c896;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 1.1em;
       border-radius: 8px;
-      box-shadow: 0 0 10px #00ffcc55;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #00b386;
+    }
+
+    .gif-container, .test-container, .mapa-container {
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    .gif-container img, .test-container img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #000000aa;
+    }
+
+    .mapa-container img {
+      width: 100%;
+      max-width: 350px;
     }
 
     footer {
-      font-size: 0.95em;
-      color: #aaa;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #333;
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #ddd;
     }
 
-    .firma {
-      font-style: italic;
-      color: #ffcc00;
-      margin-top: 10px;
+    .test-opciones button {
+      display: block;
+      margin: 10px auto;
+      width: 80%;
+    }
+
+    .respuesta {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .hojas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('https://i.ibb.co/ZdVXZsj/hojas-palmera.png') repeat-x top;
+      animation: moverHojas 10s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes moverHojas {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1000px; }
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
 
-  <h1>¡Bem-vindo ao Brasil! 🇧🇷</h1>
-  <p>Escaneaste el QR... ahora no queda otra que bailar y tomar caipiriña en la playita 🍻🏖️</p>
+  <div class="hojas"></div>
 
-  <div class="gif-container">
-    <img src="https://media2.giphy.com/media/Ds3X0Y5GwGAHO3AfhE/giphy.gif" alt="jesus bailando">
-    <img src="https://media1.giphy.com/media/k1Psl92gw7YPSPYFKm/giphy.gif" alt="baile fiesta">
+  <div class="contenido">
+    <h1>¡Fer en Brasil! 🇧🇷</h1>
 
+    <div class="gif-container">
+      <button class="btn" onclick="tocarSamba()">🎶 Tocar samba</button>
+      <button class="btn" onclick="tomarCaipirina()">🍹 Tomar caipiriña</button>
+      <button class="btn" onclick="bailarConJesus()">💃 Bailar con Yisus</button>
+      <div id="gif-jesus"></div>
+    </div>
+
+    <div class="mapa-container">
+      <h2>Aquí está la Fer 🥺</h2>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_map_of_Brazil.svg" alt="mapa de brasil" />
+      <p style="font-weight: bold; color: #ffeb3b;">🌞 Descansando cerquita del mar... comiendo algo vegan 🌱 </p>
+    </div>
+
+    <div class="test-container">
+      <h2>🇧🇷 Test Brasileiro jjj</h2>
+      <p>¿Cuál es el idioma oficial de EU Brasil?</p>
+      <div class="test-opciones">
+        <button class="btn" onclick="respuesta('mala')">Brasileño</button>
+        <button class="btn" onclick="respuesta('correcta')">Cantoneis</button>
+        <button class="btn" onclick="respuesta('mala')">Portugueisss👀</button>
+      </div>
+      <div id="resultado" class="respuesta"></div>
+    </div>
+
+    <footer>
+      <p>Hecho con 🤍 por Jamiro. — .</p>
+    </footer>
   </div>
 
-  <footer>
-    <p>Gracias por escanear... ahora tu viaje fue bendecido.🙏 "Vai Colo Colo!" = Awante el colo </p>
-    <div class="firma">—  Hecho con ❤️ por Jamiro, Diosito nunca falla 💪💻</div>
-    <div class="firma">—  tenha uma boa viagem </div>
-  </footer>
+  <audio id="samba-audio" src="samba.mp3" preload="auto"></audio>
 
+  <script>
+    function tocarSamba() {
+      document.getElementById("samba-audio").play();
+      alert("🎶 Suena la samba en la playa!");
+    }
+
+    function tomarCaipirina() {
+      alert("🍹 +1 caipiriña agregada al sistema. Salud!");
+    }
+
+    function bailarConJesus() {
+      document.getElementById("gif-jesus").innerHTML = '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVzb29pcW9oNDNoOTZlbjhzcXpqbDI1bTV2NWV4djFtaTA5djgwaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3orieY6Kny8HW0HBCg/giphy.gif" alt="Jesús bailando">';
+    }
+
+    function respuesta(valor) {
+      const resultado = document.getElementById("resultado");
+      if (valor === 'correcta') {
+        resultado.innerHTML = '¡Muy bien Fer 🥳! 🌸 <br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz">';
+      } else {
+        resultado.innerHTML = 'Intenta de nuevo Fer... 🥺';
+      }
+    }
+  </script>
 </body>
 </html>
