@@ -42,6 +42,12 @@
       background: #00b386;
     }
 
+    .btn-secreto {
+      background-color: #ffbb33;
+      color: #000;
+      font-style: italic;
+    }
+
     .gif-container, .test-container, .mapa-container {
       margin: 40px auto;
       max-width: 600px;
@@ -141,8 +147,18 @@
         <button class="btn" onclick="respuesta('mala')">Brasileiro 🇧🇷</button>
         <button class="btn" onclick="respuesta('mala')">Cantoneis</button>
         <button class="btn" onclick="respuesta('correcta')">Portugueisss 👀</button>
+        <button class="btn btn-secreto" onclick="respuestaSecreta()">No sé... ¿esto qué es? 🤨</button>
       </div>
       <div id="resultado" class="respuesta"></div>
+      <div id="mensaje-secreto" class="respuesta"></div>
+      <div id="gif-premio" style="display: none; margin-top: 20px;">
+        <img src="https://media.giphy.com/media/sfkFS8kPPYGUTuwJdH/giphy.gif?cid=ecf05e47r0wzxbgb7fb17nzsaheo3v11v1sl5gperp58z7qd&ep=v1_gifs_search&rid=giphy.gif&ct=g" 
+             alt="premio sorpresa" 
+             style="width: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
+        <p style="font-size: 1.1em; margin-top: 10px; font-weight: bold; color: #ffe;">
+          🎁 ¡Ganaste una invitación para una comida vegana a elección cuando vuelvas! 🌱💚
+        </p>
+      </div>
     </div>
 
     <footer onclick="mostrarGif()">
@@ -150,13 +166,17 @@
     </footer>
 
     <div id="gif-footer">
-      <img src="https://media.giphy.com/media/gMHFX7PEDZEHK/giphy.gif?cid=ecf05e47tjca7tzatb7gja9lcnbor66bl7yoznn0xp4vf18z&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="fer brasil gif" style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
+      <img src="https://media.giphy.com/media/gMHFX7PEDZEHK/giphy.gif?cid=ecf05e47tjca7tzatb7gja9lcnbor66bl7yoznn0xp4vf18z&ep=v1_gifs_search&rid=giphy.gif&ct=g" 
+           alt="fer brasil gif" 
+           style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
     </div>
   </div>
 
   <audio id="samba-audio" src="samba.mp3" preload="auto"></audio>
 
   <script>
+    let contadorSecreto = 0;
+
     function tocarSamba() {
       document.getElementById("samba-audio").play();
       alert("🎶 Suena la samba en la playa!");
@@ -167,7 +187,8 @@
     }
 
     function bailarConJesus() {
-      document.getElementById("gif-jesus").innerHTML = '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVzb29pcW9oNDNoOTZlbjhzcXpqbDI1bTV2NWV4djFtaTA5djgwaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3orieY6Kny8HW0HBCg/giphy.gif" alt="Jesús bailando">';
+      document.getElementById("gif-jesus").innerHTML = 
+        '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVzb29pcW9oNDNoOTZlbjhzcXpqbDI1bTV2NWV4djFtaTA5djgwaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3orieY6Kny8HW0HBCg/giphy.gif" alt="Jesús bailando">';
     }
 
     function respuesta(valor) {
@@ -176,6 +197,23 @@
         resultado.innerHTML = '¡🌸 Muy bien Fer 🥳! <br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz">';
       } else {
         resultado.innerHTML = '🥺 Nop, intenta de nuevo Feña Peña ☹️...';
+      }
+    }
+
+    function respuestaSecreta() {
+      const mensaje = document.getElementById("mensaje-secreto");
+      const gif = document.getElementById("gif-premio");
+      contadorSecreto++;
+
+      if (contadorSecreto === 1) {
+        mensaje.innerHTML = 'Ni cerca pero... ¿por qué apretaste esta opción? 😳';
+      } else if (contadorSecreto === 2) {
+        mensaje.innerHTML = 'Eres como rarita... ¿por qué lo apretaste de nuevo? 😅';
+      } else if (contadorSecreto === 3) {
+        mensaje.innerHTML = 'Tú ya estás buscando algo... 👀';
+      } else {
+        mensaje.innerHTML = '';
+        gif.style.display = "block";
       }
     }
 
