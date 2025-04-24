@@ -96,7 +96,9 @@
       font-size: 1em;
       font-weight: bold;
       text-shadow: 1px 1px #000;
-      width: 100vw;
+      margin: 50px auto 20px;
+      max-width: 600px;
+      border-radius: 12px;
       box-sizing: border-box;
       position: relative;
       z-index: 2;
@@ -109,8 +111,7 @@
 
     #gif-footer {
       display: none;
-      margin: 0 auto;
-      margin-bottom: 30px;
+      margin: 0 auto 30px;
       max-width: 400px;
     }
   </style>
@@ -172,7 +173,7 @@
     function respuesta(valor) {
       const resultado = document.getElementById("resultado");
       if (valor === 'correcta') {
-        resultado.innerHTML = '¡Muy bien Fer 🥳! 🌸 <br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz">';
+        resultado.innerHTML = '¡🌸 Muy bien Fer 🥳! <br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz">';
       } else {
         resultado.innerHTML = '🥺 Nop, intenta de nuevo Fer...';
       }
