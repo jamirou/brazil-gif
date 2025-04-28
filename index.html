@@ -3,230 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌴 Fer en Brasil 🌞</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      color: #fff;
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?fit=crop&w=1950&q=80') no-repeat center center fixed;
-      background-size: cover;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 3em;
-      margin-top: 30px;
-      color: #ffeb3b;
-      text-shadow: 2px 2px #000;
-    }
-
-    .btn {
-      background: #00c896;
-      color: #fff;
-      border: none;
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 1.1em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-      background: #00b386;
-    }
-
-.btn-secreto {
-  background-color: #00C896;
-  color: #fff;
-  font-style: italic;
-}
-    .btn-secreto:hover {
-  background-color: #00b386;
-}
-
-    .gif-container, .test-container, .mapa-container {
-      margin: 40px auto;
-      max-width: 600px;
-    }
-
-    .gif-container img, .test-container img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px #000000aa;
-    }
-
-    .test-opciones button {
-      display: block;
-      margin: 10px auto;
-      width: 80%;
-    }
-
-    .respuesta {
-      margin-top: 20px;
-      font-size: 1.2em;
-      font-weight: bold;
-    }
-
-    .hojas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: url('hojasdeplamera.jpg') repeat-x top;
-      animation: moverHojas 10s linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes moverHojas {
-      0% { background-position-x: 0; }
-      100% { background-position-x: 1000px; }
-    }
-
-    .contenido {
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
-
-    footer {
-      background-color: rgba(118, 168, 173, 0.7);
-      color: #fff;
-      padding: 20px;
-      font-size: 1em;
-      font-weight: bold;
-      text-shadow: 1px 1px #000;
-      margin: 50px auto 20px;
-      max-width: 600px;
-      border-radius: 12px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-    }
-
-    footer span {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-
-    #gif-footer {
-      display: none;
-      margin: 0 auto 30px;
-      max-width: 400px;
-    }
-  </style>
+  <title>🎂 Feliz Cumpleaños Fer 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="hojas"></div>
-
   <div class="contenido">
-    <h1>¡Fer en Brasil! 🇧🇷</h1>
+    <h1>¡Feliz Cumpleaños, Fer! 🎂🎉</h1>
 
-    <div class="gif-container">
-      <button class="btn" onclick="tocarSamba()">🎶 Tocar samba</button>
-      <button class="btn" onclick="tomarCaipirina()">🍹 Tomar caipiriña</button>
-      <button class="btn" onclick="bailarConJesus()">💃 Bailar con Yisus</button>
-      <div id="gif-jesus"></div>
+    <div class="mensaje-cumple">
+      <h2>Hoy celebramos la vida una persona increíble: tú, Fer 🎂✨</h2>
+      <p>Que tu día esté lleno de amor, luz, bendiciones y muchas sonrisas. 🥰🌟</p>
     </div>
 
-    <div class="mapa-container">
-      <h2>Ya se siente tu ausencia 🤍🥺</h2>
-    </div>
-
-    <div class="test-container">
-      <h2>🇧🇷 Test Brasileiro jjj</h2>
-      <p>¿Cuál es el idioma oficial de Todu Brasil?</p>
-      <div class="test-opciones">
-        <button class="btn" onclick="respuesta('mala')">Brasileiro 🇧🇷</button>
-        <button class="btn" onclick="respuesta('mala')">Cantoneis</button>
-        <button class="btn" onclick="respuesta('correcta')">Portugueisss 👀</button>
-        <button class="btn btn-secreto" onclick="respuestaSecreta()">qué sé yo 🤠</button>
-      </div>
-      <div id="resultado" class="respuesta"></div>
-      <div id="mensaje-secreto" class="respuesta"></div>
-      <div id="gif-premio" style="display: none; margin-top: 20px;">
-        <img src="https://media.giphy.com/media/J93sVmfYBtsRi/giphy.gif?cid=ecf05e47jj375gv4ms7o2shzkxod9hqwmix2erygmu430bvv&ep=v1_gifs_search&rid=giphy.gif&ct=g" 
-             alt="premio sorpresa" 
-             style="width: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
-        <p style="font-size: 1.1em; margin-top: 10px; font-weight: bold; color: #ffe;">
-          ¡Fer 🥺, encontraste una invitación para una comida veg a tu elección!🌱🫰🏻 
-        </p>
-        <p style="font-size: 0.95em; color: #fff9; margin-top: 8px; font-style: italic;">
-  (Sácale pantallazo y mándamelo para validarlo jjj)
-</p>
-      </div>
+    <div class="input-deseo-container" style="margin-top: 40px;">
+      <input id="input-deseo" type="text" placeholder="Escribe tu deseo aquí..." style="padding:10px; width: 80%; max-width:300px; border-radius: 8px; border:none; outline:none; font-size: 1em; font-family: 'Poppins', sans-serif;">
+      <br><br>
+      <button id="btn-enviar-deseo" style="padding:10px 20px; font-size:1em; background-color:#76A8AD; color:#fff; border:none; border-radius:8px; cursor:pointer; font-family:'Poppins', sans-serif;">Enviar ✨</button>
+      <div id="deseo-mostrado" style="margin-top:20px; font-size:1.2em; color:#ffeb3b; text-shadow:1px 1px 2px #000;"></div>
     </div>
 
     <footer onclick="mostrarGif()">
-      <p>Hecho con 🤍 por Jamiro. — <span>Vai com Deus, Fer.</span></p>
+      <p>Hecho con ❤️ por Jamiro. — <span>¡Que todos tus sueños se cumplan, Fer!</span></p>
     </footer>
 
     <div id="gif-footer">
-      <img src="https://media.giphy.com/media/gMHFX7PEDZEHK/giphy.gif?cid=ecf05e47tjca7tzatb7gja9lcnbor66bl7yoznn0xp4vf18z&ep=v1_gifs_search&rid=giphy.gif&ct=g" 
-           alt="fer brasil gif" 
-           style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
+      <img src="https://media.giphy.com/media/w1hXTOAqwpheK6Nk5s/giphy.gif?cid=ecf05e47fiijawm4i2t15tfgegpyfl1yk270tqfmpfr4xy3l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="fer fiesta gif" style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
     </div>
+
+    <!-- Estrellas Fugaces -->
+    <div class="estrella-fugaz"></div>
+    <div class="estrella-fugaz"></div>
+    <div class="estrella-fugaz"></div>
   </div>
 
-  <audio id="samba-audio" src="samba.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
 
-  <script>
-    let contadorSecreto = 0;
-
-    function tocarSamba() {
-      document.getElementById("samba-audio").play();
-      alert("🎶 Suena la samba en todu la playa!");
-    }
-
-    function tomarCaipirina() {
-      alert("🍹 +1 caipiriña para tii Ferrr. Saúde! == Salutssss🥳");
-    }
-
-    function bailarConJesus() {
-      document.getElementById("gif-jesus").innerHTML = 
-        '<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjVzb29pcW9oNDNoOTZlbjhzcXpqbDI1bTV2NWV4djFtaTA5djgwaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3orieY6Kny8HW0HBCg/giphy.gif" alt="Jesús bailando">';
-    }
-
-    function respuesta(valor) {
-      const resultado = document.getElementById("resultado");
-      if (valor === 'correcta') {
-        resultado.innerHTML = '¡🌸 Muy bien Fer 🥳!<br><img src="https://media.giphy.com/media/7vDoUoDZHoUQxMPkd7/giphy.gif?cid=ecf05e47c9lpirqg904zrpouf5qe1w53r9l1xrx6f6bfq22f&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="Snoopy feliz" style="margin-top: 10px; border-radius: 12px; box-shadow: 0 0 10px #00000066;">';
-      } else {
-        resultado.innerHTML = '🥺 Nop, intenta de nuevo Feñis ☹️...';
-      }
-    }
-
-    function respuestaSecreta() {
-      const mensaje = document.getElementById("mensaje-secreto");
-      const gif = document.getElementById("gif-premio");
-      contadorSecreto++;
-
-      if (contadorSecreto === 1) {
-        mensaje.innerHTML = 'Muy ricas tus galletas vegan 😬 pero ¿por qué apretaste esta opción? 😳';
-      } else if (contadorSecreto === 2) {
-        mensaje.innerHTML = '¿Ah si?... ¿por qué lo apretaste de nuevo? 😅';
-      } else if (contadorSecreto === 3) {
-        mensaje.innerHTML = '¿Qué buscas Fer?... 👀';
-      } else {
-        mensaje.innerHTML = '';
-        gif.style.display = "block";
-      }
-    }
-
-    function mostrarGif() {
-      const gif = document.getElementById("gif-footer");
-      gif.style.display = gif.style.display === "none" ? "block" : "none";
-    }
-  </script>
 </body>
 </html>
