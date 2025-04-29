@@ -242,7 +242,7 @@ function crearReloj() {
   reloj.style.position = 'fixed';
   reloj.style.bottom = '20px';
   reloj.style.right = '20px';
-  reloj.style.background = 'rgba(0, 0, 0, 0.5)';
+  reloj.style.background = 'rgba(1, 164, 184, 0.3)';
   reloj.style.padding = '10px 20px';
   reloj.style.borderRadius = '12px';
   reloj.style.color = '#fff';
