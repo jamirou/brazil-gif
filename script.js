@@ -292,7 +292,7 @@ function crearGatoCorriendo() {
   gato.style.position = 'fixed';
   gato.style.height = '80px';
   gato.style.zIndex = 5;
-  gato.style.pointerEvents = 'none';
+  gato.style.pointerEvents = 'auto';
 
   const direccion = Math.random() > 0.5 ? 'izquierda' : 'derecha';
   const posicionVertical = Math.random() * (window.innerHeight - 100); // Para variar la altura
@@ -390,5 +390,65 @@ document.addEventListener('click', (e) => {
         mensajeCarta.remove();
       }, 800);
     }
+  }
+});
+
+// ==== Click en los gatitos para ponerles nombre ====
+document.addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG' && e.target.src.includes('gifer.com')) {
+    const overlayNombre = document.createElement('div');
+    overlayNombre.style.position = 'fixed';
+    overlayNombre.style.top = '0';
+    overlayNombre.style.left = '0';
+    overlayNombre.style.width = '100vw';
+    overlayNombre.style.height = '100vh';
+    overlayNombre.style.backgroundColor = 'rgba(0,0,0,0.6)';
+    overlayNombre.style.display = 'flex';
+    overlayNombre.style.flexDirection = 'column';
+    overlayNombre.style.alignItems = 'center';
+    overlayNombre.style.justifyContent = 'center';
+    overlayNombre.style.zIndex = '9999';
+    overlayNombre.id = 'popup-nombre-gato';
+
+    const contenido = document.createElement('div');
+    contenido.style.background = '#fff';
+    contenido.style.padding = '30px 40px';
+    contenido.style.borderRadius = '12px';
+    contenido.style.textAlign = 'center';
+    contenido.style.fontFamily = "'Poppins', sans-serif";
+    contenido.style.color = '#333';
+    contenido.innerHTML = `
+      <h2 style="margin-bottom: 20px;">🐾 Ponle un nombre a este gatito</h2>
+      <input type="text" id="nombre-gato" placeholder="Escribe un nombre..." style="padding:10px; width:80%; max-width:250px; margin-bottom:20px; border-radius:8px; border:1px solid #ccc; font-size:1em;">
+      <br>
+      <button id="enviar-nombre-gato" style="padding:10px 20px; background:#76A8AD; border:none; border-radius:8px; color:white; font-size:1em; cursor:pointer;">Bautizar</button>
+      <br><br>
+      <button id="cancelar-nombre-gato" style="padding:8px 16px; background:#ccc; border:none; border-radius:8px; font-size:0.9em; cursor:pointer;">Cancelar</button>
+    `;
+
+    overlayNombre.appendChild(contenido);
+    document.body.appendChild(overlayNombre);
+
+    document.getElementById('enviar-nombre-gato').addEventListener('click', () => {
+      const nombre = document.getElementById('nombre-gato').value.trim();
+      if (nombre) {
+        contenido.innerHTML = `
+          <h2 style="color:#76A8AD;">🎉 ¡Ahora este gatito se llama ${nombre}! 🎉</h2>
+        `;
+        setTimeout(() => {
+          overlayNombre.style.opacity = '0';
+          setTimeout(() => {
+            overlayNombre.remove();
+          }, 800);
+        }, 2500);
+      }
+    });
+
+    document.getElementById('cancelar-nombre-gato').addEventListener('click', () => {
+      overlayNombre.style.opacity = '0';
+      setTimeout(() => {
+        overlayNombre.remove();
+      }, 800);
+    });
   }
 });
