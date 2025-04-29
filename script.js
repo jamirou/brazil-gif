@@ -1,3 +1,62 @@
+// ==== Mensajes aleatorios flotando ====
+const mensajesBonitos = [
+  "🌸 ¡Eres increíble, Fer!",
+  "💖 ¡Sigue brillando como siempre!",
+  "✨ ¡Que todos tus sueños se cumplan!",
+  "🎂 ¡Hoy es tu día especial!",
+  "🥰 ¡Eres alguien especial!",
+  "🌟 ¡Fer, eres un ser de luz!",
+  "🎉 ¡A celebrar esta vida hermosa!",
+  "🤍 ¡tqm Fer",
+  "🥺 ¡Te mereces todo lo lindo del mundo!"
+];
+
+function mostrarMensajeFlotante() {
+  const mensaje = document.createElement('div');
+  mensaje.classList.add('mensaje-flotante');
+  mensaje.textContent = mensajesBonitos[Math.floor(Math.random() * mensajesBonitos.length)];
+
+  // Aparecer en un lugar aleatorio
+  mensaje.style.position = 'fixed';
+  mensaje.style.top = `${Math.random() * 80 + 10}%`; // margen de 10% arriba y abajo
+  mensaje.style.left = `${Math.random() * 80 + 10}%`; // margen de 10% izquierda y derecha
+  mensaje.style.opacity = '0';
+  mensaje.style.transition = 'opacity 1s ease, transform 1s ease';
+  mensaje.style.transform = 'scale(0.8)';
+  const colores = [
+    '#FFFFFF', // blanco puro
+    '#FFE066', // amarillo suave
+    '#FF8C94', // rosado coral
+    '#FFD3B6', // durazno claro
+    '#D291BC', // lavanda suave
+    '#B5EAD7', // verde menta claro
+    '#FFB6B9'  // rosado pastel
+  ];
+  mensaje.style.color = colores[Math.floor(Math.random() * colores.length)];
+  mensaje.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.7)';
+
+  document.body.appendChild(mensaje);
+
+  // Activar la animación
+  setTimeout(() => {
+    mensaje.style.opacity = '1';
+    mensaje.style.transform = 'scale(1)';
+  }, 100);
+
+  // Luego de un tiempo, desaparecer
+  setTimeout(() => {
+    mensaje.style.opacity = '0';
+    mensaje.style.transform = 'scale(1.2)';
+  }, 4000);
+
+  // Finalmente eliminar el elemento
+  setTimeout(() => {
+    mensaje.remove();
+  }, 5000);
+}
+
+// Mostrar un mensaje cada 5 segundos
+setInterval(mostrarMensajeFlotante, 5000);
 function mostrarGif() {
   const gif = document.getElementById("gif-footer");
   if (gif.style.display === "none" || gif.style.display === "") {
@@ -67,16 +126,81 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
   });
 
-  const btnEnviarDeseo = document.getElementById('btn-enviar-deseo');
-  btnEnviarDeseo.addEventListener('click', () => {
-    const input = document.getElementById('input-deseo');
-    const deseo = input.value.trim();
-    if (deseo !== "") {
-      const contenedorDeseo = document.getElementById('deseo-mostrado');
-      contenedorDeseo.textContent = `🎂 "${deseo}" 🎉`;
-      input.value = "";
-    }
-  });
+
+  const formularioDeseo = document.getElementById('form-deseo');
+  const mensajeExito = document.getElementById('mensaje-exito');
+
+  if (formularioDeseo) {
+    formularioDeseo.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evita redirección
+
+      const inputDeseo = document.getElementById('input-deseo');
+      const deseo = inputDeseo.value.trim();
+      if (deseo === "") return;
+
+      // Enviar a FormSubmit en segundo plano
+      fetch('https://formsubmit.co/devjamiro@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `deseo=${encodeURIComponent(deseo)}&_captcha=false&_next=/`
+      });
+
+      // Mostrar el mensaje de éxito de inmediato
+      const mensajeExito = document.getElementById('mensaje-exito');
+      mensajeExito.textContent = '🎉 ¡Deseo enviado con amor! 🎉';
+      mensajeExito.style.opacity = '1';
+      mensajeExito.style.display = 'block';
+      mensajeExito.style.transition = 'opacity 1s ease';
+
+      setTimeout(() => {
+        mensajeExito.style.opacity = '0';
+        setTimeout(() => {
+          mensajeExito.style.display = 'none';
+          mensajeExito.textContent = '';
+        }, 1000);
+      }, 3000);
+
+      // Limpiar el input
+      inputDeseo.value = "";
+
+      // Mostrar popup bonito
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.6)';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.zIndex = '9999';
+
+      const mensajePopup = document.createElement('div');
+      mensajePopup.style.background = '#fff';
+      mensajePopup.style.padding = '30px 50px';
+      mensajePopup.style.borderRadius = '12px';
+      mensajePopup.style.textAlign = 'center';
+      mensajePopup.style.fontFamily = "'Poppins', sans-serif";
+      mensajePopup.style.color = '#333';
+      mensajePopup.innerHTML = `
+        <h2 style="margin-bottom: 20px;">🎉 ¡Deseo enviado con éxito! 🎉</h2>
+        <button id="cerrar-popup" style="padding:10px 20px; background:#76A8AD; border:none; border-radius:8px; color:white; font-size:1em; cursor:pointer;">Aceptar</button>
+      `;
+
+      overlay.appendChild(mensajePopup);
+      document.body.appendChild(overlay);
+
+      document.getElementById('cerrar-popup').addEventListener('click', () => {
+        overlay.style.transition = 'opacity 0.8s ease';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.remove();
+        }, 800);
+      });
+    });
+  }
 });
 
 document.addEventListener("click", (e) => {
@@ -207,4 +331,64 @@ function crearGatoCorriendo() {
   }, 7000);
 }
 
-setInterval(crearGatoCorriendo, 15000); // Un gato nuevo cada 15 segundos
+setInterval(() => {
+  crearGatoCorriendo();
+  if (Math.random() > 0.5) {
+    setTimeout(crearGatoCorriendo, 1000); // Un segundo después, otro gato si sale "suerte"
+  }
+}, 8000); // Baja el intervalo a 8 segundos
+
+// ==== Cartita secreta escondida ====
+document.addEventListener("DOMContentLoaded", () => {
+  const carta = document.createElement('div');
+  carta.id = 'carta-secreta';
+  carta.innerHTML = '📩';
+  carta.style.position = 'fixed';
+  carta.style.bottom = '20px';
+  carta.style.left = '20px';
+  carta.style.fontSize = '2em';
+  carta.style.cursor = 'pointer';
+  carta.style.zIndex = '1000';
+  carta.title = "Haz clic para abrir una cartita secreta 🎀";
+  document.body.appendChild(carta);
+
+  carta.addEventListener('click', () => {
+    const mensajeCarta = document.createElement('div');
+    mensajeCarta.id = 'mensaje-carta';
+    mensajeCarta.innerHTML = `
+      <div style="background: rgba(255, 255, 255, 0.95); padding: 20px 30px; border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.3); text-align: center;">
+        <h2 style="font-family:'Great Vibes', cursive; font-size:2.5em; color:#FF8C94;"> Para ti, Fer 😅🤍</h2>
+        <p style="font-family:'Poppins', sans-serif; font-size:1.2em; color:#555; margin-top:10px;">Cada momento contigo es una bendición. Nunca olvides lo especial que eres ✨🥺</p>
+        <button id="cerrar-carta" style="margin-top:20px; padding:10px 20px; background:#76A8AD; color:white; border:none; border-radius:8px; cursor:pointer; font-family:'Poppins', sans-serif;">Cerrar 🤍</button>
+      </div>
+    `;
+    mensajeCarta.style.position = 'fixed';
+    mensajeCarta.style.top = '50%';
+    mensajeCarta.style.left = '50%';
+    mensajeCarta.style.transform = 'translate(-50%, -50%)';
+    mensajeCarta.style.zIndex = '9999';
+    document.body.appendChild(mensajeCarta);
+
+    // document.getElementById('cerrar-carta').addEventListener('click', () => {
+    //   mensajeCarta.style.transition = 'opacity 0.8s ease';
+    //   mensajeCarta.style.opacity = '0';
+    //   setTimeout(() => {
+    //     mensajeCarta.remove();
+    //   }, 800);
+    // });
+  });
+});
+
+// ==== Cierre global de cartita secreta ====
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'cerrar-carta') {
+    const mensajeCarta = document.getElementById('mensaje-carta');
+    if (mensajeCarta) {
+      mensajeCarta.style.transition = 'opacity 0.8s ease';
+      mensajeCarta.style.opacity = '0';
+      setTimeout(() => {
+        mensajeCarta.remove();
+      }, 800);
+    }
+  }
+});

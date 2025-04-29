@@ -15,21 +15,25 @@
 
     <div class="mensaje-cumple">
       <h2>Hoy celebramos la vida una persona increíble: tú, Fer 🎂✨</h2>
-      <p>Que tu día esté lleno de amor, luz, bendiciones y muchas sonrisas. 🥰🌟</p>
+      
     </div>
 
-    <div class="input-deseo-container" style="margin-top: 40px;">
-      <input id="input-deseo" type="text" placeholder="Escribe tu deseo aquí..." style="padding:10px; width: 80%; max-width:300px; border-radius: 8px; border:none; outline:none; font-size: 1em; font-family: 'Poppins', sans-serif;">
+    <form action="https://formsubmit.co/devjamiro@gmail.com" method="POST" id="form-deseo" target="hidden_iframe" style="margin-top: 40px;">
+      <input type="text" name="deseo" id="input-deseo" placeholder="Escribe tu deseo aquí..." required style="padding:10px; width: 80%; max-width:300px; border-radius: 8px; border:none; outline:none; font-size: 1em; font-family: 'Poppins', sans-serif;">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="/">
       <br><br>
-      <button id="btn-enviar-deseo" style="padding:10px 20px; font-size:1em; background-color:#76A8AD; color:#fff; border:none; border-radius:8px; cursor:pointer; font-family:'Poppins', sans-serif;">Enviar ✨</button>
-      <div id="deseo-mostrado" style="margin-top:20px; font-size:1.2em; color:#ffeb3b; text-shadow:1px 1px 2px #000;"></div>
-    </div>
+      <button type="submit" id="btn-enviar-deseo" style="padding:10px 20px; font-size:1em; background-color:#76A8AD; color:#fff; border:none; border-radius:8px; cursor:pointer; font-family:'Poppins', sans-serif;">Enviar ✨</button>
+    </form>
+
+    <div id="deseo-mostrado"></div>
+    <div id="mensaje-exito" class="mensaje-exito" style="display:none;"></div>
 
     <footer onclick="mostrarGif()">
-      <p>Hecho con ❤️ por Jamiro. — <span>¡Que todos tus sueños se cumplan, Fer!</span></p>
+      <p>Hecho con 🤍 por Jamir. — <span>¡Que todos tus deseos se cumplan, Fer!</span></p>
     </footer>
 
-    <div id="gif-footer">
+    <div id="gif-footer" style="display:none;">
       <img src="https://media.giphy.com/media/w1hXTOAqwpheK6Nk5s/giphy.gif?cid=ecf05e47fiijawm4i2t15tfgegpyfl1yk270tqfmpfr4xy3l&ep=v1_gifs_search&rid=giphy.gif&ct=g" alt="fer fiesta gif" style="width:100%; border-radius: 12px; box-shadow: 0 0 10px #000000aa;">
     </div>
 
@@ -39,7 +43,17 @@
     <div class="estrella-fugaz"></div>
   </div>
 
-  <script src="script.js"></script>
+  <div id="carta-secreta">📩</div>
 
+  <div id="modal-carta" style="display:none;">
+    <div class="contenido-modal">
+      <h2>💌 Cartita secreta 💌</h2>
+      <p>Querida Fer, cada momento contigo es un regalo que atesoro profundamente. ¡Que hoy y siempre tu vida esté llena de amor, luz y felicidad! 🎂✨</p>
+      <button id="cerrar-carta" style="margin-top: 15px; padding:8px 20px; background-color:#76A8AD; color:white; border:none; border-radius:8px; cursor:pointer;">Cerrar 💌</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
